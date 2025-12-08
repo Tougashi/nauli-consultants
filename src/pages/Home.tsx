@@ -107,7 +107,7 @@ function Home() {
           <a href="#" className="w-5 h-5 flex items-center justify-center">
              <img src="/images/icon/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
           </a>
-          <a href="#" className="w-5 h-5 flex items-center justify-center">
+          <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-5 flex items-center justify-center">
              <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
           </a>
           <a href="#" className="w-5 h-5 flex items-center justify-center">

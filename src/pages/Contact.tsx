@@ -68,7 +68,7 @@ function Contact() {
                 <a href="#" className="w-6 h-6 flex items-center justify-center p-0.5 rounded-sm">
                     <img src="/images/icon/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
                 </a>
-                <a href="#" className="w-6 h-6 flex items-center justify-center p-0.5 rounded-sm">
+                <a href="https://www.instagram.com/nauliconsultants/" className="w-6 h-6 flex items-center justify-center p-0.5 rounded-sm">
                     <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
                 </a>
                 <a href="#" className="w-6 h-6 flex items-center justify-center p-0.5 rounded-sm">
@@ -179,13 +179,13 @@ function Contact() {
         {/* Right: Social & Contact */}
         <div className="flex flex-col items-center md:items-end gap-4 pb-4">
           <div className="flex gap-10 md:gap-14">
-            <a href="#" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
+            <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
                <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
             </a>
-            <a href="#" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
+            <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
                <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
             </a>
-            <a href="#" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
+            <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
                <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
             </a>
           </div>
