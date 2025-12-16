@@ -2,7 +2,7 @@ import '../index.css';
 
 function AboutServiceSecond() {
   return (
-    <div id="founders" className="bg-white text-black pb-12 md:pb-20">
+    <div id="founders" className="bg-white text-black pb-6 md:pb-6">
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Left Side - Content (Swapped) */}
@@ -16,7 +16,7 @@ function AboutServiceSecond() {
             {/* Bottom Content Group */}
             <div className="flex flex-col items-start md:items-end w-full">
                 {/* Title with Border */}
-                <div className="mb-4 relative inline-block self-start md:self-end mr-0 md:mr-[12rem]">
+                <div className="mb-6 relative inline-block self-start md:self-end mr-0 md:mr-[12rem]">
                    <div className="relative px-6 md:px-12 py-4 md:py-6">
                       <img 
                         src="/images/about/whatwedoborder.png" 
@@ -28,7 +28,7 @@ function AboutServiceSecond() {
                 </div>
 
                 {/* Description Text */}
-                <div className="font-mono text-xs md:text-sm space-y-3 md:space-y-4 leading-relaxed max-w-sm text-left">
+                <div className="font-mono text-xs md:text-sm space-y-6 leading-relaxed max-w-sm text-left">
                     <p>
                       AT NAULI CONSULTANTS, WE ARE A DESIGN AND BUILD COMPANY FOUNDED AND RUN BY US  GONAN AND SRI, A BROTHER-AND-SISTER TEAM WITH ROOTS IN BALI AND PERSPECTIVES SHAPED BY TWO VERY DIFFERENT YET COMPLEMENTARY PATHS.
                       GONAN COMES FROM A BACKGROUND IN MANAGEMENT AND COMMUNICATIONS, BRINGING STRUCTURE, CLARITY, AND STRATEGIC DIRECTION TO EVERYTHING WE DO. SRI, ON THE OTHER HAND, IS TRAINED IN ART AND DESIGN, WITH A HANDS-ON UNDERSTANDING OF MATERIALS, SPATIAL EXPERIENCES, AND THE CREATIVE PROCESS.
@@ -52,17 +52,17 @@ function AboutServiceSecond() {
 
       </div>
       {/* Full width image below section */}
-      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-8">
+      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
             <img 
               src="/images/about/contentthird.png" 
               alt="Content Third" 
               className="w-full h-auto object-cover"
             />
             {/* Bottom 3-column text */}
-            <div className="grid grid-cols-3 w-full mt-3 md:mt-4 font-mono text-[10px] md:text-sm uppercase tracking-wide px-2 md:px-0">
-                <div className="text-left">STAND BY TEXT</div>
-                <div className="text-center">STAND BY TEXT</div>
-                <div className="text-right">STAND BY TEXT</div>
+            <div className="grid grid-cols-3 w-full mt-6 md:mt-6 font-mono text-xs uppercase tracking-wide px-2 md:px-0">
+                <div className="text-left">ARCHITECTURE</div>
+                <div className="text-center">INTERIOR</div>
+                <div className="text-right">CONSTRUCTION</div>
             </div>
         </div>
     </div>

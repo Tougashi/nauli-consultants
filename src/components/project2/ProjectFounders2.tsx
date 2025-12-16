@@ -2,7 +2,7 @@ import '../../index.css';
 
 function ProjectFounders2() {
   return (
-    <div className="bg-white text-black pb-12 md:pb-20">
+    <div className="bg-white text-black pb-6 md:pb-6">
       <div className="grid grid-cols-1 md:grid-cols-2">
         
         {/* Left Side - Content (Swapped) */}
@@ -16,7 +16,7 @@ function ProjectFounders2() {
             {/* Bottom Content Group */}
             <div className="flex flex-col items-start w-full">
                 {/* Title with Border */}
-                <div className="mb-4 relative inline-block self-start ml-0 md:ml-[4rem]">
+                <div className="mb-6 relative inline-block self-start ml-0 md:ml-[4rem]">
                    <div className="relative px-6 md:px-12 py-4 md:py-6">
                       <img 
                         src="/images/about/whatwedoborder.png" 
@@ -28,7 +28,7 @@ function ProjectFounders2() {
                 </div>
 
                 {/* Description Text */}
-                <div className="font-mono text-xs md:text-sm space-y-3 md:space-y-4 leading-relaxed max-w-sm text-start ml-0 md:ml-[4rem]">
+                <div className="font-mono text-xs md:text-sm space-y-6 leading-relaxed max-w-sm text-start ml-0 md:ml-[4rem]">
                     <p>
                     VILLA TERRA IS A SIX-BEDROOM, NINE-BATHROOM LUXURY RESIDENCE FEATURING A PRIVATE GYM, TREATMENT ROOMS, A DEDICATED OFFICE, AN ART STUDIO, AND A POOL. DESIGNED TO ACCOMMODATE THE DAILY ROUTINES OF ITS RESIDENTS, THE HOME OFFERS PRIVACY FOR EACH INDIVIDUAL WHILE FOSTERING SPACES THAT ENCOURAGE CONNECTION AND TOGETHERNESS.
                     </p>
@@ -50,7 +50,7 @@ function ProjectFounders2() {
 
       </div>
       {/* Full width image below section */}
-      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-8">
+      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
             <img 
               src="/images/project-page2/founders4.png" 
               alt="Content Third" 
@@ -59,9 +59,9 @@ function ProjectFounders2() {
       </div>
 
       {/* Two column images with border - full width */}
-      <div className="grid grid-cols-1 md:grid-cols-2 w-[calc(100vw-24px+16px)] md:w-[calc(100vw-36px+24px)] relative left-1/2 -translate-x-1/2 border-[8px] md:border-[12px] border-white min-h-screen md:h-screen mt-6 md:mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 border-[6px] border-white min-h-screen md:h-screen mt-6 md:mt-6">
           {/* Left Image */}
-          <div className="relative h-[50vh] md:h-full group border-b-[4px] md:border-b-0 md:border-r-[6px] border-white overflow-hidden">
+          <div className="relative h-[50vh] md:h-full group border-b-[3px] md:border-b-0 md:border-r-[3px] border-white overflow-hidden">
               <img 
                 src="/images/project-page2/founders5.png" 
                   alt="What We Do" 
@@ -70,7 +70,7 @@ function ProjectFounders2() {
           </div>
 
           {/* Right Image */}
-          <div className="relative h-[50vh] md:h-full group border-t-[4px] md:border-t-0 md:border-l-[6px] border-white overflow-hidden">
+          <div className="relative h-[50vh] md:h-full group border-t-[3px] md:border-t-0 md:border-l-[3px] border-white overflow-hidden">
               <img 
                   src="/images/project-page2/founders6.png" 
                   alt="Who We Are" 
@@ -80,8 +80,8 @@ function ProjectFounders2() {
       </div>
 
       {/* Bottom text */}
-      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-3 md:mt-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 w-full font-mono text-[10px] md:text-sm uppercase tracking-wide gap-2 md:gap-0 px-2 md:px-0">
+      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 w-full font-mono text-[10px] md:text-sm uppercase tracking-wide gap-6 px-2 md:px-0">
               <div className="text-left">VILLA TERRA</div>
               <div className="text-right md:text-center">VILLA TERRA</div>
               <div className="text-left md:text-center">VILLA TERRA</div>

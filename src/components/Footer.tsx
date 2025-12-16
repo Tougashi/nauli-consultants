@@ -22,7 +22,7 @@ function Footer() {
 
   return (
     <div style={{ height }} className="relative w-full">
-      <div ref={footerRef} className="fixed bottom-0 left-0 w-full -z-10">
+      <div ref={footerRef} className="fixed bottom-0 left-0 w-full bg-white" style={{ zIndex: -20 }}>
         <footer className="grid grid-cols-1 md:grid-cols-3 items-end text-xs uppercase tracking-wider shrink-0 p-6 md:p-12 gap-6 md:gap-0">
           {/* Left: Footer Icon Image */}
           <div className="flex justify-center md:justify-start">

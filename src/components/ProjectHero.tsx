@@ -28,7 +28,7 @@ function ProjectHero() {
   };
 
   return (
-    <div className="h-screen w-full relative overflow-hidden bg-black">
+    <div className="h-screen w-full relative overflow-hidden bg-black mb-6">
       <AnimatePresence mode="wait">
         <motion.img 
           key={currentIndex}
@@ -46,7 +46,7 @@ function ProjectHero() {
       <div className="absolute inset-0 flex justify-between items-center px-4 md:px-8 pointer-events-none z-10">
           <button 
             onClick={handlePrev}
-            className="pointer-events-auto cursor-pointer hover:opacity-75 transition-opacity bg-white/20 p-2 md:p-4 backdrop-blur-sm border border-white/30"
+            className="pointer-events-auto cursor-pointer hover:opacity-75 transition-opacity p-2 md:p-4"
           >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="md:w-6 md:h-6">
                   <path d="M15 18l-6-6 6-6" />
@@ -54,7 +54,7 @@ function ProjectHero() {
           </button>
           <button 
             onClick={handleNext}
-            className="pointer-events-auto cursor-pointer hover:opacity-75 transition-opacity bg-white/20 p-2 md:p-4 backdrop-blur-sm border border-white/30"
+            className="pointer-events-auto cursor-pointer hover:opacity-75 transition-opacity p-2 md:p-4"
           >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="md:w-6 md:h-6">
                   <path d="M9 18l6-6-6-6" />

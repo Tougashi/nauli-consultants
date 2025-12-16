@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nauli Consultants</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        neutral: {
+                            900: '#1a1a1a',
+                            800: '#262626',
+                            // ... default tailwind colors
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        /* Custom selection color */
+        ::selection { background-color: #1a1a1a; color: white; }
+    </style>
+</head>
+<body class="bg-[#FDFDFD] text-neutral-900 font-sans antialiased">
+
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-8 bg-transparent">
+        <div class="container mx-auto px-6 md:px-12 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter uppercase z-50 mix-blend-difference cursor-pointer">
+                Nauli Consultants
+            </div>
+            
+            <div class="hidden md:flex gap-12 text-xs font-medium tracking-[0.2em] uppercase">
+                <a href="#" class="hover:text-neutral-500 transition-colors">Expertise</a>
+                <a href="#" class="hover:text-neutral-500 transition-colors">Projects</a>
+                <a href="#" class="hover:text-neutral-500 transition-colors">Firm</a>
+                <a href="#" class="hover:text-neutral-500 transition-colors">Journal</a>
+            </div>
+
+            <button onclick="toggleMenu()" class="md:hidden z-50 p-2">
+                <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="fixed inset-0 bg-[#FDFDFD] z-40 flex-col justify-center items-center gap-8 text-2xl uppercase tracking-widest hidden transition-opacity duration-300">
+        <a href="#" onclick="toggleMenu()">Expertise</a>
+        <a href="#" onclick="toggleMenu()">Projects</a>
+        <a href="#" onclick="toggleMenu()">Firm</a>
+    </div>
+
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 md:px-12 border-b border-neutral-200">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <div class="md:col-span-8">
+                    <h1 class="text-6xl md:text-8xl lg:text-9xl font-medium tracking-tighter leading-[0.9] mb-12">
+                        PRECISION <br />
+                        <span class="text-neutral-400">IN</span> STRATEGY
+                    </h1>
+                </div>
+                <div class="md:col-span-4 flex flex-col justify-end pb-4">
+                    <p class="text-sm md:text-base leading-relaxed text-neutral-600 max-w-xs ml-auto text-right md:text-left">
+                        We engineer sustainable growth through meticulous analysis and architectural thinking. Nauli Consultants defines the future of corporate infrastructure.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="border-b border-neutral-200">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-neutral-200 border-x border-neutral-200">
+                <div class="p-6 md:p-8 hover:bg-neutral-50 transition-colors cursor-default group">
+                    <span class="block text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Founded</span>
+                    <span class="block text-xl md:text-2xl font-medium group-hover:translate-x-1 transition-transform duration-300">2015</span>
+                </div>
+                <div class="p-6 md:p-8 hover:bg-neutral-50 transition-colors cursor-default group">
+                    <span class="block text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Projects</span>
+                    <span class="block text-xl md:text-2xl font-medium group-hover:translate-x-1 transition-transform duration-300">140+</span>
+                </div>
+                <div class="p-6 md:p-8 hover:bg-neutral-50 transition-colors cursor-default group">
+                    <span class="block text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Location</span>
+                    <span class="block text-xl md:text-2xl font-medium group-hover:translate-x-1 transition-transform duration-300">Jkt / Bali</span>
+                </div>
+                <div class="p-6 md:p-8 hover:bg-neutral-50 transition-colors cursor-default group">
+                    <span class="block text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Sector</span>
+                    <span class="block text-xl md:text-2xl font-medium group-hover:translate-x-1 transition-transform duration-300">Eng</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-24 px-6 md:px-12">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-neutral-900 pb-4">
+                <h2 class="text-4xl md:text-5xl tracking-tighter">OUR EXPERTISE</h2>
+                <span class="text-xs tracking-widest uppercase mb-2">Capabilities 01 — 04</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+                <div class="group cursor-pointer">
+                    <div class="aspect-[4/3] bg-neutral-100 mb-6 overflow-hidden relative border border-neutral-100">
+                        <div class="absolute inset-0 bg-neutral-200 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+                        <div class="absolute bottom-4 left-4 text-xs font-mono border border-neutral-900 px-2 py-1 bg-white z-10">REF: 01</div>
+                    </div>
+                    <div class="flex justify-between items-start border-t border-neutral-200 pt-4">
+                        <div>
+                            <span class="text-xs font-bold text-neutral-400 block mb-2">/01</span>
+                            <h3 class="text-2xl md:text-3xl font-medium mb-2 group-hover:text-neutral-600 transition-colors">Urban Planning</h3>
+                        </div>
+                        <svg class="w-6 h-6 -rotate-45 group-hover:rotate-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                    <p class="text-neutral-500 mt-2 max-w-sm text-sm">Designing the framework for future cities with sustainable integration.</p>
+                </div>
+
+                <div class="group cursor-pointer">
+                    <div class="aspect-[4/3] bg-neutral-100 mb-6 overflow-hidden relative border border-neutral-100">
+                        <div class="absolute inset-0 bg-neutral-300 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+                        <div class="absolute bottom-4 left-4 text-xs font-mono border border-neutral-900 px-2 py-1 bg-white z-10">REF: 02</div>
+                    </div>
+                    <div class="flex justify-between items-start border-t border-neutral-200 pt-4">
+                        <div>
+                            <span class="text-xs font-bold text-neutral-400 block mb-2">/02</span>
+                            <h3 class="text-2xl md:text-3xl font-medium mb-2 group-hover:text-neutral-600 transition-colors">Financial Arch.</h3>
+                        </div>
+                        <svg class="w-6 h-6 -rotate-45 group-hover:rotate-0 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </div>
+                    <p class="text-neutral-500 mt-2 max-w-sm text-sm">Structuring capital efficiency for large-scale industrial projects.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#111] text-[#FDFDFD] py-24 px-6 md:px-12">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-5 order-2 md:order-1">
+                    <span class="text-xs tracking-[0.25em] text-neutral-400 block mb-8">FEATURED CASE STUDY</span>
+                    <h2 class="text-4xl md:text-6xl tracking-tighter mb-8 leading-tight">
+                        THE SILENT <br/> INFRASTRUCTURE
+                    </h2>
+                    <p class="text-neutral-400 leading-relaxed mb-8 max-w-md">
+                        How Nauli Consultants redefined the operational flow of Jakarta's newest logistics hub without disrupting a single day of service.
+                    </p>
+                    <button class="flex items-center gap-4 text-sm uppercase tracking-widest hover:gap-6 transition-all border-b border-white pb-1">
+                        Read Case Study 
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+                <div class="md:col-span-7 order-1 md:order-2">
+                    <div class="aspect-[3/4] md:aspect-square bg-neutral-800 grayscale hover:grayscale-0 transition-all duration-700 relative overflow-hidden">
+                        <div class="absolute top-1/4 left-1/4 w-1/2 h-1/2 border border-neutral-600 rounded-full mix-blend-overlay"></div>
+                        <div class="absolute bottom-10 right-10 text-[10px] tracking-widest text-neutral-500 transform rotate-90 origin-right">
+                            JAKARTA — 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pt-24 pb-12 px-6 md:px-12 bg-[#FDFDFD]">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-xl font-bold tracking-tighter uppercase mb-6">Nauli Consultants</h4>
+                    <p class="max-w-xs text-neutral-500 text-sm">
+                        Strategic engineering and design for the modern world. Creating systems that endure.
+                    </p>
+                </div>
+                
+                <div>
+                    <h5 class="text-xs tracking-widest uppercase mb-6 text-neutral-400">Navigate</h5>
+                    <ul class="space-y-4 text-sm text-neutral-600">
+                        <li><a href="#" class="hover:text-black transition-colors">About Firm</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Expertise</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Projects</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-xs tracking-widest uppercase mb-6 text-neutral-400">Connect</h5>
+                    <ul class="space-y-4 text-sm text-neutral-600">
+                        <li><a href="#" class="hover:text-black transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-black transition-colors">hello@nauli.co</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-200 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest text-neutral-400">
+                <p>&copy; 2025 Nauli Consultants.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('py-8', 'bg-transparent');
+                navbar.classList.add('py-4', 'bg-[#FDFDFD]/90', 'backdrop-blur-md', 'border-b', 'border-neutral-200');
+            } else {
+                navbar.classList.add('py-8', 'bg-transparent');
+                navbar.classList.remove('py-4', 'bg-[#FDFDFD]/90', 'backdrop-blur-md', 'border-b', 'border-neutral-200');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            }
+        }
+    </script>
+</body>
+</html>

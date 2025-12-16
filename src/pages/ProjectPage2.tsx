@@ -12,7 +12,7 @@ function ProjectPage2() {
     <div className="min-h-screen text-white font-geist relative">
       <div className="relative z-10 bg-white">
         <Header 
-          className="p-4 md:p-12 absolute top-0 left-0 w-full pointer-events-none" 
+          className="p-4 md:p-12 pointer-events-none" 
           logoClassName="opacity-100 whitecale brightness-80" 
         />
 

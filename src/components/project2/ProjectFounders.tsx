@@ -2,7 +2,7 @@ import '../../index.css';
 
 function ProjectFounders() {
   return (
-    <div className="bg-white text-black pb-6 md:pb-8">
+    <div className="bg-white text-black pb-6 md:pb-6">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left Side - Image */}
         <div className="w-full h-full px-2 md:px-0 md:pl-2 lg:pl-3 py-2 md:py-0">
@@ -24,7 +24,7 @@ function ProjectFounders() {
             {/* Bottom Content Group */}
             <div>
                 {/* Title with Border */}
-                <div className="mb-4 relative inline-block self-start">
+                <div className="mb-6 relative inline-block self-start">
                    <div className="relative px-6 md:px-12 py-4 md:py-6">
                       <img 
                         src="/images/about/whatwedoborder.png" 
@@ -36,7 +36,7 @@ function ProjectFounders() {
                 </div>
 
                 {/* Description Text */}
-                <div className="font-mono text-xs md:text-sm space-y-3 md:space-y-4 leading-relaxed max-w-sm">
+                <div className="font-mono text-xs md:text-sm space-y-6 leading-relaxed max-w-sm">
                     <p>
                     VILLA TERRA IS A SIX-BEDROOM, NINE-BATHROOM LUXURY RESIDENCE FEATURING A PRIVATE GYM, TREATMENT ROOMS, A DEDICATED OFFICE, AN ART STUDIO, AND A POOL. DESIGNED TO ACCOMMODATE THE DAILY ROUTINES OF ITS RESIDENTS, THE HOME OFFERS PRIVACY FOR EACH INDIVIDUAL WHILE FOSTERING SPACES THAT ENCOURAGE CONNECTION AND TOGETHERNESS.
                     </p>
@@ -48,7 +48,7 @@ function ProjectFounders() {
         </div>
       </div>
         {/* Full width image below table */}
-        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-8">
+        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
             <img 
               src="/images/project-page2/founders2.png" 
               alt="Project Founders" 

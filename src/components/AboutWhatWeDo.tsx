@@ -2,7 +2,7 @@ import '../index.css';
 
 function AboutWhatWeDo() {
   return (
-    <div id="what-we-do" className="bg-white text-black pb-6 md:pb-8">
+    <div id="what-we-do" className="bg-white text-black pb-6 md:pb-6">
       <div className="grid grid-cols-1 md:grid-cols-2">
         {/* Left Side - Image */}
         <div className="w-full h-full px-2 md:px-0 md:pl-2 lg:pl-3 py-2 md:py-0">
@@ -24,19 +24,19 @@ function AboutWhatWeDo() {
             {/* Bottom Content Group */}
             <div>
                 {/* Title with Border */}
-                <div className="mb-4 relative inline-block self-start">
+                <div className="mb-6 relative inline-block self-start">
                    <div className="relative px-6 md:px-12 py-4 md:py-6">
                       <img 
                         src="/images/about/whatwedoborder.png" 
                         alt="What We Do Border" 
-                        className="absolute inset-0 w-[120%] max-w-none object-contain -mt-10 md:-mt-14 -ml-6 md:-ml-10"
+                        className="absolute inset-0 w-[120%] max-w-none object-contain  md:-mt-14 -ml-6 md:-ml-10"
                       />
                       <h2 className="text-xl md:text-2xl tracking-widest relative z-10 uppercase -ml-6 md:-ml-10">WHAT WE DO</h2>
                    </div>
                 </div>
 
                 {/* Description Text */}
-                <div className="font-mono text-xs md:text-sm space-y-3 md:space-y-4 leading-relaxed max-w-sm">
+                <div className="font-mono text-xs md:text-sm space-y-6 leading-relaxed max-w-sm">
                     <p>
                     NAULI CONSULTANTS IS A MULTIDISCIPLINARY DESIGN AND BUILD FIRM OFFERING ARCHITECTURE, INTERIOR DESIGN, AND CONSTRUCTION SERVICES. WE WORK FLEXIBLY PROVIDING DESIGN-ONLY, CONSTRUCTION-ONLY, OR FULL DESIGN-AND-BUILD SOLUTIONS. ROOTED IN LOCAL KNOWLEDGE AND CRAFTSMANSHIP, WE APPROACH EACH PROJECT WITH A COMMITMENT TO QUALITY AND AUTHENTICITY, DELIVERING THOUGHTFUL SOLUTIONS FOR RESIDENTIAL, COMMERCIAL, AND HOSPITALITY DEVELOPMENTS ACROSS BALI AND BEYOND.
                     </p>
@@ -45,10 +45,10 @@ function AboutWhatWeDo() {
         </div>
       </div>
         {/* Full width image below table */}
-        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-8">
+        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
             <img 
               src="/images/about/contentsecond.png" 
-              alt="Content First" 
+              alt="Content Second" 
               className="w-full h-auto object-cover"
             />
         </div>

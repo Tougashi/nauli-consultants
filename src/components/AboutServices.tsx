@@ -1,93 +1,140 @@
+import { motion } from 'framer-motion';
+
 function AboutServices() {
   return (
-    <div className="min-h-screen bg-white text-black p-4 md:p-6">
-        <div className="mb-12 md:mb-20 relative inline-block">
-           <div className="relative px-4 md:px-8 py-2 md:py-3">
-              <img 
-                src="/images/about/serviceborder.png" 
-                alt="Service Border" 
-                className="absolute inset-0 w-[120%] max-w-none object-contain -mt-9 md:-mt-12 -ml-2 md:-ml-4"
-              />
-              <h2 className="text-lg md:text-xl tracking-widest relative z-10">SERVICES</h2>
-           </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12 font-mono text-xs max-w-6xl mx-auto">
-          {/* Design Column */}
-          <div className="border-2 border-black h-full flex flex-col">
-             <div className="border-b-2 border-black p-3 md:p-4">
-               <h3 className="uppercase tracking-wide">DESIGN</h3>
-             </div>
-             <div className="border-b-2 border-black p-3 md:p-4 min-h-[100px] md:min-h-[120px]">
-               <ul className="space-y-1">
-                 <li>1. ARCHITECTURE</li>
-                 <li>2. INTERIOR</li>
-                 <li>3. FURNITURE</li>
-                 <li>4. LANDSCAPING</li>
-               </ul>
-             </div>
-             <div className="p-3 md:p-4 space-y-3 md:space-y-4 leading-relaxed flex-1">
-               <p>
-                 DESIGN IS AT THE CORE OF WHAT WE DO. AT NAULI CONSULTANTS, WE OFFER COMPREHENSIVE DESIGN PACKAGES THAT COVER ARCHITECTURE, INTERIOR DESIGN, AND LANDSCAPE DESIGN AS A FULLY INTEGRATED SERVICE.
-               </p>
-               <p>
-                 OUR DESIGN PROCESS IS GROUNDED IN CONTEXT, FUNCTION, AND AESTHETICS – ENSURING THAT EVERY ELEMENT, FROM BUILDING FORM TO MATERIAL PALETTE TO OUTDOOR SPACE, WORKS IN HARMONY.
-               </p>
-               <p>
-                 WHETHER YOU'RE BUILDING A HOME, A HOSPITALITY PROJECT, OR A PUBLIC SPACE, OUR DESIGN TEAM WORKS CLOSELY WITH YOU TO CRAFT ENVIRONMENTS THAT ARE MEANINGFUL, FUNCTIONAL, AND DISTINCTLY YOUR OWN.
-               </p>
-             </div>
+    <div className="relative min-h-screen bg-white text-black py-12">
+      <div className="px-6 md:px-12 lg:px-20">
+        {/* Section Title - Large and Bold */}
+        <motion.div 
+          className="mb-6 md:mb-6 relative inline-block"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
+        >
+          <div className="relative px-6 md:px-8 py-4 md:py-6">
+            <img 
+              src="/images/about/whatwedoborder.png" 
+              alt="Services Border" 
+              className="absolute inset-0 w-[120%] max-w-none object-contain -mt-6 md:-mt-8 -ml-6 md:-ml-8"
+            />
+            <h2 className="text-xl md:text-2xl font-bold tracking-widest uppercase relative z-10 -ml-6 md:-ml-8">
+              Services
+            </h2>
           </div>
+        </motion.div>
+
+        {/* Services Grid - Minimal, No borders */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-6 max-w-7xl mx-auto">
+          {/* Design Column */}
+          <motion.div 
+            className="group"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.6, 0.05, 0.01, 0.9] }}
+          >
+            <div className="mb-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 tracking-tight uppercase">Design</h3>
+              <div className="w-12 h-[2px] bg-black/20 group-hover:w-20 group-hover:bg-black transition-all duration-500" />
+            </div>
+            
+            <div className="space-y-6 mb-6 font-mono text-xs font-bold uppercase tracking-wide text-black/60">
+              <p>Architecture</p>
+              <p>Interior</p>
+              <p>Furniture</p>
+              <p>Landscaping</p>
+            </div>
+            
+            <div className="space-y-6 text-xs md:text-sm font-bold leading-relaxed text-black uppercase">
+              <p>
+                Design is at the core of what we do. At Nauli Consultants, we offer comprehensive design packages that cover architecture, interior design, and landscape design as a fully integrated service.
+              </p>
+              <p>
+                Our design process is grounded in context, function, and aesthetics – ensuring that every element, from building form to material palette to outdoor space, works in harmony.
+              </p>
+              <p>
+                Whether you're building a home, a hospitality project, or a public space, our design team works closely with you to craft environments that are meaningful, functional, and distinctly your own.
+              </p>
+            </div>
+          </motion.div>
 
           {/* Post-Production Column */}
-          <div className="border-2 border-black h-full flex flex-col">
-             <div className="border-b-2 border-black p-3 md:p-4">
-               <h3 className="uppercase tracking-wide">POST - PRODUCTION</h3>
-             </div>
-             <div className="border-b-2 border-black p-3 md:p-4 min-h-[100px] md:min-h-[120px]">
-               <ul className="space-y-1">
-                 <li>1. ARCHITECTURAL DRAWINGS</li>
-                 <li>2. MECHANICAL, ELECTRICAL & PLUMBING</li>
-                 <li>3. STRUCTURAL DRAWINGS</li>
-                 <li>4. STILL & VIDEO RENDERINGS</li>
-               </ul>
-             </div>
-             <div className="p-3 md:p-4 space-y-3 md:space-y-4 leading-relaxed flex-1">
-               <p>
-                 POST-PRODUCTION IS A CRUCIAL STEP IN BRINGING DESIGN CONCEPTS TO LIFE. AT NAULI CONSULTANTS, WE UNDERSTAND THE IMPORTANCE OF TRANSLATING IDEAS INTO REALITY THROUGH DETAILED DRAWINGS. FROM MAIN CONSTRUCTION DRAWINGS TO MEP, STRUCTURAL PLANS, AND RENDERS, WE METICULOUSLY CREATE AND REFINE EVERY DOCUMENT TO ENSURE SEAMLESS EXECUTION.
-               </p>
-             </div>
-          </div>
+          <motion.div 
+            className="group"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.6, 0.05, 0.01, 0.9] }}
+          >
+            <div className="mb-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 tracking-tight uppercase">Post-Production</h3>
+              <div className="w-12 h-[2px] bg-black/20 group-hover:w-20 group-hover:bg-black transition-all duration-500" />
+            </div>
+            
+            <div className="space-y-6 mb-6 font-mono text-xs font-bold uppercase tracking-wide text-black/60">
+              <p>Architectural Drawings</p>
+              <p>MEP</p>
+              <p>Structural Drawings</p>
+              <p>Renderings</p>
+            </div>
+            
+            <div className="space-y-6 text-xs md:text-sm font-bold leading-relaxed text-black uppercase">
+              <p>
+                Post-production is a crucial step in bringing design concepts to life. At Nauli Consultants, we understand the importance of translating ideas into reality through detailed drawings.
+              </p>
+              <p>
+                From main construction drawings to MEP, structural plans, and renders, we meticulously create and refine every document to ensure seamless execution.
+              </p>
+            </div>
+          </motion.div>
 
           {/* Construction Column */}
-          <div className="h-full flex flex-col border-2 border-black">
-             <div className="border-b-2 border-black p-3 md:p-4">
-               <h3 className="uppercase tracking-wide">CONSTRUCTION</h3>
-             </div>
-             <div className="border-b-2 border-black p-3 md:p-4 min-h-[100px] md:min-h-[120px]">
-               <ul className="space-y-1">
-                 <li>1. ARCHITECTURE, INTERIOR & LANDSCAPING</li>
-                 <li>2. CONSTRUCTION MANAGAMENT</li>
-                 <li>3. INSTALLATION</li>
-               </ul>
-             </div>
-             <div className="p-3 md:p-4 space-y-3 md:space-y-4 leading-relaxed flex-1">
-               <p>
-                 HERE AT NAULI CONSULTANTS, WE BRING IDEAS TO LIFE. WE OFFER BUILD SERVICES THAT ENSURE EVERY PROJECT IS EXECUTED WITH PRECISION, QUALITY, AND EXPERTISE. FROM STRUCTURAL WORK TO DETAILED FINISHING, OUR TEAM DELIVERS SEAMLESS CONSTRUCTION SOLUTIONS TAILORED TO EACH DESIGN.
-               </p>
-             </div>
-          </div>
-        </div>
-
-        {/* Full width image below table */}
-        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-12 md:mt-20">
-            <img 
-              src="/images/about/contentfirst.png" 
-              alt="Content First" 
-              className="w-full h-auto object-cover"
-            />
+          <motion.div 
+            className="group"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.6, 0.05, 0.01, 0.9] }}
+          >
+            <div className="mb-6">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 tracking-tight uppercase">Construction</h3>
+              <div className="w-12 h-[2px] bg-black/20 group-hover:w-20 group-hover:bg-black transition-all duration-500" />
+            </div>
+            
+            <div className="space-y-6 mb-6 font-mono text-xs font-bold uppercase tracking-wide text-black/60">
+              <p>Architecture & Interior</p>
+              <p>Construction Management</p>
+              <p>Installation</p>
+            </div>
+            
+            <div className="space-y-6 text-xs md:text-sm font-bold leading-relaxed text-black uppercase">
+              <p>
+                Here at Nauli Consultants, we bring ideas to life. We offer build services that ensure every project is executed with precision, quality, and expertise.
+              </p>
+              <p>
+                From structural work to detailed finishing, our team delivers seamless construction solutions tailored to each design.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Full width image - Dramatic reveal - Outside padding container */}
+      <motion.div 
+        className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6 overflow-hidden"
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1.2, ease: [0.6, 0.05, 0.01, 0.9] }}
+      >
+        <img 
+          src="/images/about/contentfirst.png" 
+          alt="Content First" 
+          className="w-full h-auto object-cover"
+        />
+      </motion.div>
+    </div>
   );
 }
 

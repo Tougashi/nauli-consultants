@@ -86,7 +86,7 @@ function ProjectMenu() {
       </AnimatePresence>
 
       <div className="relative z-10 flex flex-col h-full pointer-events-none">
-        <Header className="shrink-0 pointer-events-auto" />
+        <Header className="p-4 md:p-8 shrink-0 pointer-events-auto" />
 
         {/* Main Content */}
         <main className="flex-1 min-h-0 flex items-center justify-center py-8 w-full">
