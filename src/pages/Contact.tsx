@@ -1,8 +1,56 @@
 import { motion } from 'framer-motion';
+import { useState, FormEvent } from 'react';
 import Header from '../components/Header';
 import AnimatedStroke from '../components/AnimatedStroke';
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    whatsapp: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage(null);
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitMessage({ type: 'success', text: 'MESSAGE SENT SUCCESSFULLY. WE\'LL GET BACK TO YOU SOON.' });
+        setFormData({ name: '', company: '', email: '', whatsapp: '', message: '' });
+      } else {
+        setSubmitMessage({ type: 'error', text: 'FAILED TO SEND MESSAGE. PLEASE TRY AGAIN.' });
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitMessage({ type: 'error', text: 'AN ERROR OCCURRED. PLEASE TRY AGAIN LATER.' });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white font-geist relative flex flex-col">
       <Header className="p-4 md:p-8" />
@@ -99,37 +147,98 @@ function Contact() {
             </div>
 
             {/* Form */}
-            <form className="flex flex-col gap-4 md:gap-6 font-mono text-xs uppercase">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 md:gap-6 font-mono text-xs uppercase">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <div className="flex flex-col gap-2">
-                        <label>NAME</label>
-                        <input type="text" className="bg-[#d9d9d9] h-8 w-full px-2 text-black" />
+                        <label htmlFor="name">NAME *</label>
+                        <input 
+                          type="text" 
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          disabled={isSubmitting}
+                          className="bg-[#d9d9d9] h-8 w-full px-2 text-black disabled:opacity-50" 
+                        />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label>COMPANY / PROJECT</label>
-                        <input type="text" className="bg-[#d9d9d9] h-8 w-full px-2 text-black" />
+                        <label htmlFor="company">COMPANY / PROJECT</label>
+                        <input 
+                          type="text" 
+                          id="company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          disabled={isSubmitting}
+                          className="bg-[#d9d9d9] h-8 w-full px-2 text-black disabled:opacity-50" 
+                        />
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     <div className="flex flex-col gap-2">
-                        <label>EMAIL</label>
-                        <input type="email" className="bg-[#d9d9d9] h-8 w-full px-2 text-black" />
+                        <label htmlFor="email">EMAIL *</label>
+                        <input 
+                          type="email" 
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          disabled={isSubmitting}
+                          className="bg-[#d9d9d9] h-8 w-full px-2 text-black disabled:opacity-50" 
+                        />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label>WHATSAPP NUMBER</label>
-                        <input type="text" className="bg-[#d9d9d9] h-8 w-full px-2 text-black" />
+                        <label htmlFor="whatsapp">WHATSAPP NUMBER *</label>
+                        <input 
+                          type="text" 
+                          id="whatsapp"
+                          name="whatsapp"
+                          value={formData.whatsapp}
+                          onChange={handleChange}
+                          required
+                          disabled={isSubmitting}
+                          className="bg-[#d9d9d9] h-8 w-full px-2 text-black disabled:opacity-50" 
+                        />
                     </div>
                 </div>
 
                 <div className="flex flex-col gap-2">
-                    <label>MESSAGE</label>
-                    <textarea className="bg-[#d9d9d9] h-32 w-full p-2 text-black resize-none"></textarea>
+                    <label htmlFor="message">MESSAGE</label>
+                    <textarea 
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      disabled={isSubmitting}
+                      className="bg-[#d9d9d9] h-32 w-full p-2 text-black resize-none disabled:opacity-50"
+                    ></textarea>
                 </div>
 
+                {/* Submit Message */}
+                {submitMessage && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`p-3 text-xs font-bold ${
+                      submitMessage.type === 'success' 
+                        ? 'bg-green-500/20 text-green-300 border border-green-500/30' 
+                        : 'bg-red-500/20 text-red-300 border border-red-500/30'
+                    }`}
+                  >
+                    {submitMessage.text}
+                  </motion.div>
+                )}
+
                 <div className="flex justify-end">
-                    <button type="submit" className="bg-[#d9d9d9] text-black px-8 py-1 uppercase text-xs font-bold hover:bg-white transition-colors cursor-pointer">
-                        SUBMIT
+                    <button 
+                      type="submit" 
+                      disabled={isSubmitting}
+                      className="bg-[#d9d9d9] text-black px-8 py-1 uppercase text-xs font-bold hover:bg-white transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? 'SENDING...' : 'SUBMIT'}
                     </button>
                 </div>
             </form>
