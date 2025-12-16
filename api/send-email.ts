@@ -26,7 +26,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const mailOptions = {
       from: '"Nauli Consultants - Contact Form" <sender@webgoster.com>',
-      to: 'adryanowh@gmail.com', // Test email first
+      to: 'hello@nauliconsultants.com', // Test email first
       subject: `Nauli Consultants - New Contact from ${name}`,
       html: `
         <!DOCTYPE html>

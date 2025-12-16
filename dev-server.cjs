@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Create reusable transporter
-const transporter = nodemailer.createTransporter({
+const transporter = nodemailer.createTransport({
   host: 'mail.webgoster.com',
   port: 465,
   secure: true,
@@ -33,7 +33,7 @@ app.post('/api/send-email', async (req, res) => {
 
     const mailOptions = {
       from: '"Nauli Consultants - Contact Form" <sender@webgoster.com>',
-      to: 'adryanowh@gmail.com',
+      to: 'hello@nauliconsultants.com',
       subject: `Nauli Consultants - New Contact from ${name}`,
       html: `
         <!DOCTYPE html>
@@ -184,7 +184,7 @@ app.post('/api/send-email', async (req, res) => {
     // Send mail
     const info = await transporter.sendMail(mailOptions);
     console.log('✅ Email sent successfully:', info.messageId);
-    console.log('📬 Sent to: adryanowh@gmail.com\n');
+    console.log('📬 Sent to: hello@nauliconsultants.com\n');
 
     res.json({ 
       success: true, 
