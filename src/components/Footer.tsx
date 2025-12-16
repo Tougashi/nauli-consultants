@@ -22,8 +22,8 @@ function Footer() {
 
   return (
     <div style={{ height }} className="relative w-full">
-      <div ref={footerRef} className="fixed bottom-0 left-0 w-full bg-white" style={{ zIndex: -20 }}>
-        <footer className="grid grid-cols-1 md:grid-cols-3 items-end text-xs uppercase tracking-wider shrink-0 p-6 md:p-12 gap-6 md:gap-0">
+      <div ref={footerRef} className="fixed bottom-0 left-0 w-full bg-white" style={{ zIndex: -20, pointerEvents: 'none' }}>
+        <footer className="grid grid-cols-1 md:grid-cols-3 items-end text-xs uppercase tracking-wider shrink-0 p-6 md:p-12 gap-6 md:gap-0" style={{ pointerEvents: 'auto' }}>
           {/* Left: Footer Icon Image */}
           <div className="flex justify-center md:justify-start">
             <img 
@@ -41,14 +41,14 @@ function Footer() {
           {/* Right: Social & Contact */}
           <div className="flex flex-col items-center md:items-end gap-4 pb-0 md:pb-4">
             <div className="flex gap-8 md:gap-14">
-              <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
-                 <img src="/images/icon/secondary_instagram.png" alt="Instagram" className="w-full h-full object-contain pointer" />
+              <a href="https://www.instagram.com/nauliconsultants/" target="_blank" rel="noopener noreferrer" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center hover:opacity-70 transition-opacity cursor-pointer">
+                 <img src="/images/icon/secondary_instagram.png" alt="Instagram" className="w-full h-full object-contain" />
               </a>
-              <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
-                 <img src="/images/icon/secondary_instagram.png" alt="Instagram" className="w-full h-full object-contain pointer" />
+              <a href="https://www.instagram.com/nauliconsultants/" target="_blank" rel="noopener noreferrer" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center hover:opacity-70 transition-opacity cursor-pointer">
+                 <img src="/images/icon/secondary_instagram.png" alt="Instagram" className="w-full h-full object-contain" />
               </a>
-              <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center">
-                 <img src="/images/icon/secondary_instagram.png" alt="Instagram" className="w-full h-full object-contain pointer" />
+              <a href="https://www.instagram.com/nauliconsultants/" target="_blank" rel="noopener noreferrer" className="w-5 h-6 md:w-6 md:h-8 flex items-center justify-center hover:opacity-70 transition-opacity cursor-pointer">
+                 <img src="/images/icon/secondary_instagram.png" alt="Instagram" className="w-full h-full object-contain" />
               </a>
             </div>
             <div className="text-center md:text-left font-mono text-xs leading-tight text-black">
