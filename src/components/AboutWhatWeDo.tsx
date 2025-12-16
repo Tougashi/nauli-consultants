@@ -30,7 +30,7 @@ function AboutWhatWeDo() {
                       <img 
                         src="/images/about/whatwedoborder.png" 
                         alt="What We Do Border" 
-                        className="absolute inset-0 w-[120%] max-w-none object-contain  md:-mt-14 -ml-6 md:-ml-10"
+                        className="absolute inset-0 w-[120%] max-w-none object-contain -mt-10 md:-mt-14 -ml-6 md:-ml-10"
                       />
                       <h2 className="text-xl md:text-2xl tracking-widest relative z-10 uppercase -ml-6 md:-ml-10">WHAT WE DO</h2>
                    </div>
