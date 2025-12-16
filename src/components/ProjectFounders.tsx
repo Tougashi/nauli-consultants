@@ -1,4 +1,5 @@
 import '../index.css';
+import FullScreenImageSection from './FullScreenImageSection';
 
 function ProjectFounders() {
   return (
@@ -47,14 +48,14 @@ function ProjectFounders() {
             </div>
         </div>
       </div>
-        {/* Full width image below table */}
-        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
-            <img 
-              src="/images/project-page/founders2.png" 
-              alt="Project Founders" 
-              className="w-full h-auto object-cover"
-            />
-        </div>
+      
+      {/* Full Screen Image with Typewriting Effect */}
+      <FullScreenImageSection 
+        imageSrc="/images/project-page/founders2.png"
+        text="Design & Build"
+        subText="Complete Package • Concept to Handover"
+        imageAlt="Design and Build"
+      />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import FullScreenImageSection from '../FullScreenImageSection';
+
 function ProjectAbout() {
   return (
     <div className="bg-white text-black mb-6 mt-6">
@@ -40,14 +42,13 @@ function ProjectAbout() {
         </div>
       </div>
 
-        {/* Full width image below table */}
-        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
-            <img 
-              src="/images/project-page2/about2.png" 
-              alt="Project About" 
-              className="w-full h-auto object-cover"
-            />
-        </div>
+      {/* Full Screen Image with Typewriting Effect */}
+      <FullScreenImageSection 
+        imageSrc="/images/project-page2/about2.png"
+        text="Villa Terra"
+        subText="Luxury Residence • Bali"
+        imageAlt="Villa Terra"
+      />
     </div>
   );
 }

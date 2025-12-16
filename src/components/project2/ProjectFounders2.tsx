@@ -1,4 +1,5 @@
 import '../../index.css';
+import FullScreenImageSection from '../FullScreenImageSection';
 
 function ProjectFounders2() {
   return (
@@ -49,14 +50,14 @@ function ProjectFounders2() {
         </div>
 
       </div>
-      {/* Full width image below section */}
-      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
-            <img 
-              src="/images/project-page2/founders4.png" 
-              alt="Content Third" 
-              className="w-full h-auto object-cover"
-            />
-      </div>
+      
+      {/* Full Screen Image with Typewriting Effect */}
+      <FullScreenImageSection 
+        imageSrc="/images/project-page2/founders4.png"
+        text="Luxury Living"
+        subText="Six Bedrooms • Nine Bathrooms"
+        imageAlt="Luxury Living"
+      />
 
       {/* Two column images with border - full width */}
       <div className="grid grid-cols-1 md:grid-cols-2 w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 border-[6px] border-white min-h-screen md:h-screen mt-6 md:mt-6">
