@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import FullScreenImageSection from './FullScreenImageSection';
 
 function AboutServices() {
   return (
@@ -120,20 +121,13 @@ function AboutServices() {
         </div>
       </div>
 
-      {/* Full width image - Dramatic reveal - Outside padding container */}
-      <motion.div 
-        className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6 overflow-hidden"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1.2, ease: [0.6, 0.05, 0.01, 0.9] }}
-      >
-        <img 
-          src="/images/about/contentfirst.png" 
-          alt="Content First" 
-          className="w-full h-auto object-cover"
-        />
-      </motion.div>
+      {/* Full Screen Image with Typewriting Effect */}
+      <FullScreenImageSection 
+        imageSrc="/images/about/contentfirst.png"
+        text="Services"
+        subText="Design • Post-Production • Construction"
+        imageAlt="Services"
+      />
     </div>
   );
 }

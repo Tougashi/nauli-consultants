@@ -1,4 +1,5 @@
 import '../index.css';
+import FullScreenImageSection from './FullScreenImageSection';
 
 function AboutServiceSecond() {
   return (
@@ -51,20 +52,14 @@ function AboutServiceSecond() {
         </div>
 
       </div>
-      {/* Full width image below section */}
-      <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
-            <img 
-              src="/images/about/contentthird.png" 
-              alt="Content Third" 
-              className="w-full h-auto object-cover"
-            />
-            {/* Bottom 3-column text */}
-            <div className="grid grid-cols-3 w-full mt-6 md:mt-6 font-mono text-xs uppercase tracking-wide px-2 md:px-0">
-                <div className="text-left">ARCHITECTURE</div>
-                <div className="text-center">INTERIOR</div>
-                <div className="text-right">CONSTRUCTION</div>
-            </div>
-        </div>
+      
+      {/* Full Screen Image with Typewriting Effect */}
+      <FullScreenImageSection 
+        imageSrc="/images/about/contentthird.png"
+        text="Founders"
+        subText="Gonan & Sri • Brother and Sister Team"
+        imageAlt="Founders"
+      />
     </div>
   );
 }

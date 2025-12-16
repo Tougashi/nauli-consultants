@@ -1,4 +1,5 @@
 import '../index.css';
+import FullScreenImageSection from './FullScreenImageSection';
 
 function AboutWhatWeDo() {
   return (
@@ -44,14 +45,14 @@ function AboutWhatWeDo() {
             </div>
         </div>
       </div>
-        {/* Full width image below table */}
-        <div className="w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 mt-6 md:mt-6">
-            <img 
-              src="/images/about/contentsecond.png" 
-              alt="Content Second" 
-              className="w-full h-auto object-cover"
-            />
-        </div>
+      
+      {/* Full Screen Image with Typewriting Effect */}
+      <FullScreenImageSection 
+        imageSrc="/images/about/contentsecond.png"
+        text="What We Do"
+        subText="Multidisciplinary Design and Build Firm"
+        imageAlt="What We Do"
+      />
     </div>
   );
 }
