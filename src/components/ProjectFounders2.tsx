@@ -57,7 +57,7 @@ function ProjectFounders2() {
         text="Luxury Living"
         subText="Six Bedrooms • Nine Bathrooms"
         imageAlt="Luxury Living"
-      />
+            />
 
       {/* Two column images with border - full width */}
       <div className="grid grid-cols-1 md:grid-cols-2 w-[calc(100vw-24px)] md:w-[calc(100vw-36px)] relative left-1/2 -translate-x-1/2 border-[6px] border-white min-h-screen md:h-screen mt-6 md:mt-6">

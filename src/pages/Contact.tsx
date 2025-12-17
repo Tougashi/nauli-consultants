@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, FormEvent } from 'react';
+import { useState, type FormEvent } from 'react';
 import Header from '../components/Header';
 import AnimatedStroke from '../components/AnimatedStroke';
 
@@ -100,7 +100,7 @@ function Contact() {
                             delay={3.0}
                             duration={1.8}
                             className="w-full h-full"
-                        />
+                    />
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@ function Contact() {
                             delay={3.2}
                             duration={1.8}
                             className="w-full h-full"
-                        />
+                    />
                     </div>
                 </div>
             </div>
@@ -257,7 +257,7 @@ function Contact() {
                             delay={3.0}
                             duration={1.8}
                             className="w-full h-full"
-                        />
+                    />
                     </div>
                 </div>
                 <div className="font-mono text-xs md:text-sm space-y-2 mt-1 md:mt-2 uppercase max-w-md">
@@ -268,7 +268,7 @@ function Contact() {
 
             {/* Career */}
             <div className="flex flex-col gap-3 md:gap-4 mt-4 md:mt-8">
-            <div className="relative inline-block self-start">
+                <div className="relative inline-block self-start">
                     <div className="relative px-4 md:px-6 py-1 md:py-2">
                         {/* Pure SVG chalk stroke around CAREER */}
                         <AnimatedStroke

@@ -31,13 +31,13 @@ function About() {
       {/* Content Sections - Higher z-index, slides over hero AND covers footer until end */}
       <div className="relative z-10 bg-white">
         {/* Services Section */}
-        <AboutServices />
+          <AboutServices />
 
         {/* What We Do Section */}
-        <AboutWhatWeDo />
+          <AboutWhatWeDo />
 
         {/* Founders Section */}
-        <AboutServiceSecond />
+          <AboutServiceSecond />
 
         {/* Footer - animation now inside Footer component */}
         <Footer />

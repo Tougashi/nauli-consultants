@@ -8,6 +8,7 @@ import Contact from './pages/Contact';
 import ProjectPage from './pages/ProjectPage';
 import ProjectPage2 from './pages/ProjectPage2';
 import SplashScreen from './components/SplashScreen';
+import PageTransition from './components/PageTransition';
 import './index.css';
 
 function App() {
@@ -32,38 +33,18 @@ function App() {
   }, []);
 
   return (
-    <Routes location={location} key={location.pathname}>
-      <Route path="/" element={
-        <SplashScreen>
-          <Home />
-        </SplashScreen>
-      } />
-      <Route path="/project-menu" element={
-        <SplashScreen>
-          <ProjectMenu />
-        </SplashScreen>
-      } />
-      <Route path="/about" element={
-        <SplashScreen>
-          <About />
-        </SplashScreen>
-      } />
-      <Route path="/contact" element={
-        <SplashScreen>
-          <Contact />
-        </SplashScreen>
-      } />
-      <Route path="/project-page" element={
-        <SplashScreen>
-          <ProjectPage />
-        </SplashScreen>
-      } />
-      <Route path="/project-page-2" element={
-        <SplashScreen>
-          <ProjectPage2 />
-        </SplashScreen>
-      } />
-    </Routes>
+    <SplashScreen>
+      <PageTransition>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/project-menu" element={<ProjectMenu />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/project-page" element={<ProjectPage />} />
+          <Route path="/project-page-2" element={<ProjectPage2 />} />
+        </Routes>
+      </PageTransition>
+    </SplashScreen>
   );
 }
 
