@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 const SplashScreen = ({ children }: { children: React.ReactNode }) => {
   // Check sessionStorage immediately to determine initial state
-  const [showSplash, setShowSplash] = useState(() => {
+  const [showSplash] = useState(() => {
     if (typeof window !== 'undefined') {
       return !sessionStorage.getItem('hasSeenSplash');
     }
