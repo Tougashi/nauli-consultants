@@ -7,9 +7,13 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import ProjectPage from './pages/ProjectPage';
 import ProjectPage2 from './pages/ProjectPage2';
+import Maintenance from './pages/Maintenance';
 import SplashScreen from './components/SplashScreen';
 import PageTransition from './components/PageTransition';
 import './index.css';
+
+// Set to true to enable maintenance mode
+const MAINTENANCE_MODE = true;
 
 function App() {
   const location = useLocation();
@@ -31,6 +35,11 @@ function App() {
       lenis.destroy();
     };
   }, []);
+
+  // Show maintenance page when maintenance mode is enabled
+  if (MAINTENANCE_MODE) {
+    return <Maintenance />;
+  }
 
   return (
     <SplashScreen>
