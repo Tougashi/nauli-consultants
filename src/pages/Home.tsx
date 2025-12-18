@@ -59,6 +59,7 @@ const projects = [
 function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Motion values for smooth parallax
   const mouseX = useMotionValue(0);
@@ -70,12 +71,22 @@ function Home() {
   const y = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    // Check if mobile
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     // Set loaded after splash screen
     const timer = setTimeout(() => setIsLoaded(true), 2700);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   useEffect(() => {
+    if (isMobile) return; // Disable parallax on mobile
+    
     const handleMouseMove = (e: MouseEvent) => {
       // Calculate how much to move based on cursor position
       // Move opposite to cursor for natural parallax feel
@@ -95,8 +106,78 @@ function Home() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isMobile]);
 
+  // Mobile Layout
+  if (isMobile) {
+    return (
+      <div className="min-h-screen w-screen bg-black text-white relative">
+        {/* Fixed Header */}
+        <Header className="fixed top-0 left-0 right-0 z-50 p-4" />
+
+        {/* Mobile Grid Layout */}
+        <motion.div
+          className="pt-20 pb-20 px-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="grid grid-cols-2 gap-3">
+            {projects.slice(0, 16).map((project, index) => (
+              <motion.a
+                key={project.id}
+                href="/project-page"
+                className="relative overflow-hidden"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 2.7 + (index * 0.05),
+                  ease: "easeOut" 
+                }}
+              >
+                <img
+                  src={project.src}
+                  alt={project.title}
+                  className="w-full h-auto object-cover"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/80 to-transparent">
+                  <p className="text-[10px] uppercase tracking-wide text-white/70">{project.location}</p>
+                  <p className="text-xs uppercase font-bold tracking-wide">{project.title}</p>
+                </div>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Fixed UI Elements */}
+        <motion.div 
+          className="fixed bottom-4 left-4 z-50 flex gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.8, delay: 3.2 }}
+        >
+          <a href="#" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
+            <img src="/images/icon/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
+          </a>
+          <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
+            <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
+          </a>
+        </motion.div>
+
+        <motion.div 
+          className="fixed bottom-4 right-4 z-50 text-xs uppercase tracking-wider"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+          transition={{ duration: 0.8, delay: 3.2 }}
+        >
+          <a href="/contact" className="opacity-70 hover:opacity-100 transition-opacity">Contact</a>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Desktop Layout (unchanged)
   return (
     <div className="h-screen w-screen bg-black text-white overflow-hidden relative">
       {/* Fixed Header */}
