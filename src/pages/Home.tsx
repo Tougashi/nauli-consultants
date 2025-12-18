@@ -110,7 +110,7 @@ function Home() {
       
       // Parallax intensity (how much the canvas moves)
       const intensityX = 1000;
-      const intensityY = 850;
+      const intensityY = 1000;
       
       const moveX = ((e.clientX - centerX) / centerX) * -intensityX;
       const moveY = ((e.clientY - centerY) / centerY) * -intensityY;
