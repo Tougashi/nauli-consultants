@@ -60,6 +60,8 @@ function Home() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewMode, setViewMode] = useState<'scattered' | 'grid'>('scattered');
+  const [initialLoadDone, setInitialLoadDone] = useState(false);
 
   // Motion values for smooth parallax
   const mouseX = useMotionValue(0);
@@ -76,10 +78,23 @@ function Home() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
     
-    // Set loaded after splash screen
-    const timer = setTimeout(() => setIsLoaded(true), 2700);
+    // Check if splash was already shown (returning visitor in same session)
+    const hasSeenSplash = sessionStorage.getItem('hasSeenSplash');
+    
+    if (hasSeenSplash) {
+      // No splash screen, load immediately
+      setIsLoaded(true);
+      setInitialLoadDone(true);
+    } else {
+      // Set loaded after splash screen
+      const timer = setTimeout(() => {
+        setIsLoaded(true);
+        setInitialLoadDone(true);
+      }, 2700);
+      return () => clearTimeout(timer);
+    }
+    
     return () => {
-      clearTimeout(timer);
       window.removeEventListener('resize', checkMobile);
     };
   }, []);
@@ -117,7 +132,7 @@ function Home() {
 
         {/* Mobile Grid Layout */}
         <motion.div
-          className="pt-20 pb-20 px-4"
+          className="pt-20 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
           transition={{ duration: 0.8 }}
@@ -132,7 +147,7 @@ function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
                   duration: 0.5, 
-                  delay: 2.7 + (index * 0.05),
+                  delay: initialLoadDone ? index * 0.03 : (2.7 + (index * 0.05)),
                   ease: "easeOut" 
                 }}
               >
@@ -150,28 +165,22 @@ function Home() {
           </div>
         </motion.div>
 
-        {/* Fixed UI Elements */}
+        {/* Footer - Not Fixed on Mobile */}
         <motion.div 
-          className="fixed bottom-4 left-4 z-50 flex gap-4"
+          className="flex justify-between items-center px-4 py-6 mt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-          transition={{ duration: 0.8, delay: 3.2 }}
+          transition={{ duration: 0.8, delay: initialLoadDone ? 0.5 : 3.2 }}
         >
-          <a href="#" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <img src="/images/icon/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
-          </a>
-          <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
-            <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
-          </a>
-        </motion.div>
-
-        <motion.div 
-          className="fixed bottom-4 right-4 z-50 text-xs uppercase tracking-wider"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-          transition={{ duration: 0.8, delay: 3.2 }}
-        >
-          <a href="/contact" className="opacity-70 hover:opacity-100 transition-opacity">Contact</a>
+          <div className="flex gap-4">
+            <a href="#" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
+              <img src="/images/icon/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
+            </a>
+            <a href="https://www.instagram.com/nauliconsultants/" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
+              <img src="/images/icon/instagram.png" alt="Instagram" className="w-full h-full object-contain" />
+            </a>
+          </div>
+          <a href="/contact" className="text-xs uppercase tracking-wider opacity-70 hover:opacity-100 transition-opacity">Contact</a>
         </motion.div>
       </div>
     );
@@ -179,90 +188,175 @@ function Home() {
 
   // Desktop Layout (unchanged)
   return (
-    <div className="h-screen w-screen bg-black text-white overflow-hidden relative">
+    <div className={`${viewMode === 'grid' ? 'min-h-screen overflow-auto' : 'h-screen overflow-hidden'} w-screen bg-black text-white relative`}>
       {/* Fixed Header */}
       <Header className="fixed top-0 left-0 right-0 z-50 p-4 md:p-8" />
 
-      {/* Parallax Canvas Container */}
-      <motion.div
-        className="absolute inset-0 w-[250vw] h-[200vh]"
-        style={{ 
-          x, 
-          y,
-          left: '-75vw',
-          top: '-50vh',
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isLoaded ? 1 : 0 }}
-        transition={{ duration: 0.8 }}
+      {/* View Toggle - Desktop Only */}
+      <motion.div 
+        className="fixed top-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : -20 }}
+        transition={{ duration: 0.8, delay: initialLoadDone ? 0.3 : 3.0 }}
       >
-        {/* Scattered Project Images */}
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            className="absolute cursor-pointer"
-            style={{
-              left: `${project.x}%`,
-              top: `${project.y}%`,
-              width: project.width,
-            }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.6, 
-              delay: 2.7 + project.delay,
-              ease: "easeOut" 
-            }}
-            onMouseEnter={() => setHoveredProject(project.id)}
-            onMouseLeave={() => setHoveredProject(null)}
+        <span className="text-xs uppercase tracking-widest text-white/60">View by</span>
+        <div className="flex gap-2">
+          <button 
+            onClick={() => setViewMode('scattered')}
+            className={`p-1.5 transition-opacity ${viewMode === 'scattered' ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+            title="Scattered View"
           >
-            {/* Image */}
-            <motion.div
-              className="relative overflow-hidden"
-              animate={{
-                filter: hoveredProject === null || hoveredProject === project.id 
-                  ? 'brightness(1)' 
-                  : 'brightness(0.4)',
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.img
-                src={project.src}
-                alt={project.title}
-                className="w-full h-auto object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.4 }}
-              />
-            </motion.div>
-          </motion.div>
-        ))}
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="6" height="6" fill="white"/>
+              <rect x="10" y="4" width="4" height="4" fill="white"/>
+              <rect x="4" y="10" width="5" height="5" fill="white"/>
+              <rect x="12" y="11" width="6" height="6" fill="white"/>
+            </svg>
+          </button>
+          <button 
+            onClick={() => setViewMode('grid')}
+            className={`p-1.5 transition-opacity ${viewMode === 'grid' ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+            title="Grid View"
+          >
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="5" height="5" fill="white"/>
+              <rect x="9" y="2" width="5" height="5" fill="white"/>
+              <rect x="2" y="9" width="5" height="5" fill="white"/>
+              <rect x="9" y="9" width="5" height="5" fill="white"/>
+              <rect x="16" y="2" width="2" height="5" fill="white"/>
+              <rect x="16" y="9" width="2" height="5" fill="white"/>
+            </svg>
+          </button>
+        </div>
       </motion.div>
 
-      {/* Center Project Info - Shows on hover */}
-      {hoveredProject && (
+      {/* Scattered View - Parallax Canvas */}
+      {viewMode === 'scattered' && (
+        <>
+          <motion.div
+            className="absolute inset-0 w-[250vw] h-[200vh]"
+            style={{ 
+              x, 
+              y,
+              left: '-75vw',
+              top: '-50vh',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isLoaded ? 1 : 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Scattered Project Images */}
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                className="absolute cursor-pointer"
+                style={{
+                  left: `${project.x}%`,
+                  top: `${project.y}%`,
+                  width: project.width,
+                }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: initialLoadDone ? index * 0.02 : (2.7 + project.delay),
+                  ease: "easeOut" 
+                }}
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+              >
+                {/* Image */}
+                <motion.div
+                  className="relative overflow-hidden"
+                  animate={{
+                    filter: hoveredProject === null || hoveredProject === project.id 
+                      ? 'brightness(1)' 
+                      : 'brightness(0.4)',
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.img
+                    src={project.src}
+                    alt={project.title}
+                    className="w-full h-auto object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Center Project Info - Shows on hover */}
+          {hoveredProject && (
+            <motion.div
+              className="fixed inset-0 flex flex-col justify-center items-center z-40 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <motion.span 
+                className="text-sm md:text-base uppercase tracking-widest text-white/80 mb-2"
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.05 }}
+              >
+                {projects.find(p => p.id === hoveredProject)?.location}
+              </motion.span>
+              <motion.h2 
+                className="text-4xl md:text-7xl lg:text-8xl font-bold uppercase tracking-wider text-white text-center leading-tight"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.3, delay: 0.1 }}
+              >
+                {projects.find(p => p.id === hoveredProject)?.title}
+              </motion.h2>
+            </motion.div>
+          )}
+        </>
+      )}
+
+      {/* Grid View - Neat Layout */}
+      {viewMode === 'grid' && (
         <motion.div
-          className="fixed inset-0 flex flex-col justify-center items-center z-40 pointer-events-none"
+          className="pt-28 pb-20 px-8 md:px-12 lg:px-20"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
         >
-          <motion.span 
-            className="text-sm md:text-base uppercase tracking-widest text-white/80 mb-2"
-            initial={{ y: 10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.05 }}
-          >
-            {projects.find(p => p.id === hoveredProject)?.location}
-          </motion.span>
-          <motion.h2 
-            className="text-4xl md:text-7xl lg:text-8xl font-bold uppercase tracking-wider text-white text-center leading-tight"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-          >
-            {projects.find(p => p.id === hoveredProject)?.title}
-          </motion.h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {projects.map((project, index) => (
+              <motion.a
+                key={project.id}
+                href="/project-page"
+                className="group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: index * 0.03,
+                  ease: "easeOut" 
+                }}
+              >
+                <div className="overflow-hidden mb-3">
+                  <motion.img
+                    src={project.src}
+                    alt={project.title}
+                    className="w-full h-auto object-cover"
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wide group-hover:text-white/80 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-xs uppercase tracking-wide text-white/50">
+                  {project.location}
+                </p>
+              </motion.a>
+            ))}
+          </div>
         </motion.div>
       )}
 
@@ -271,7 +365,7 @@ function Home() {
         className="fixed bottom-4 md:bottom-8 left-4 md:left-8 z-50 flex gap-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-        transition={{ duration: 0.8, delay: 3.2 }}
+        transition={{ duration: 0.8, delay: initialLoadDone ? 0.5 : 3.2 }}
       >
         <a href="#" className="w-5 h-5 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity">
           <img src="/images/icon/facebook.png" alt="Facebook" className="w-full h-full object-contain" />
@@ -285,7 +379,7 @@ function Home() {
         className="fixed bottom-4 md:bottom-8 right-4 md:right-8 z-50 text-xs uppercase tracking-wider"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-        transition={{ duration: 0.8, delay: 3.2 }}
+        transition={{ duration: 0.8, delay: initialLoadDone ? 0.5 : 3.2 }}
       >
         <a href="/contact" className="opacity-70 hover:opacity-100 transition-opacity">Contact</a>
       </motion.div>
