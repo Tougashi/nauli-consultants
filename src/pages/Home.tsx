@@ -109,8 +109,8 @@ function Home() {
       const centerY = window.innerHeight / 2;
       
       // Parallax intensity (how much the canvas moves)
-      const intensityX = 300;
-      const intensityY = 200;
+      const intensityX = 1000;
+      const intensityY = 850;
       
       const moveX = ((e.clientX - centerX) / centerX) * -intensityX;
       const moveY = ((e.clientY - centerY) / centerY) * -intensityY;
